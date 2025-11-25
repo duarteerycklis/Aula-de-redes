@@ -7,7 +7,7 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 
 # Prepara o socket do servidor
 
-serverSocket.bind(('127.0.0.1', 6789))
+serverSocket.bind(('', 6789))
 serverSocket.listen(1)
 
 while True:
@@ -24,8 +24,7 @@ while True:
         outputdata = f.read()
     
         # Envia a linha de status do cabeçalho HTTP
-        filename == "/"
-        filename = "/av2.html"
+        header = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n'
         connectionSocket.sendall("HTTP/1.1 200 OK\r\n\r\n".encode())
 
 
@@ -49,4 +48,5 @@ while True:
 
 
     serverSocket.close()
+
     sys.exit() # Encerra o programa
