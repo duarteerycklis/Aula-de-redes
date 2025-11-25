@@ -38,15 +38,16 @@ while True:
         
     except IOError:
         # Envia mensagem de erro 404 se o arquivo não for encontrado
-        connectionSocket.sendall("HTTP/1.1 404 Not Found\r\n\r\n".encode())
-        connectionSocket.sendall("<html><head></head><body><h1>404 Not Found</h1></body></html>\r\n".encode())
-        
+        error_header = 'HTTP/1.1 404 Not Found\r\n\r\n'
+        error_body = '<html><head></head><body><h1>404 Not Found</h1></body></html>'
+        connectionSocket.send(error_header.encode())
+        connectionSocket.send(error_body.encode())
+       
         # Fecha a conexão com o cliente
-
-        
         connectionSocket.close()
 
 
     serverSocket.close()
 
     sys.exit() # Encerra o programa
+
